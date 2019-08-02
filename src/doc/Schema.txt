@@ -1,0 +1,21 @@
+
+## url tble
+create sequence tbl_url_id_seq;
+
+create table tbl_url (
+id integer not null default nextval('tbl_url_id_seq') primary key,
+url varchar not null,
+create_date timestamp with time zone default current_timestamp
+);
+
+alter sequence tbl_url_id_seq owned by tbl_url.id;
+
+create unique index concurrently tbl_url_unique_url on tbl_url (url);
+
+
+## url hit table
+create table tbl_url_hit(
+	url varchar not null,
+	ip varchar not null,
+	hit_date timestamp with time zone default current_timestamp
+);
