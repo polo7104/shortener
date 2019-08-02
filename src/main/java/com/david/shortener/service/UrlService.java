@@ -14,8 +14,12 @@ public class UrlService {
     @Autowired
     private UrlRepository urlRepository;
 
-    public List<UrlVO> getUrl (String id){
+    public String getUrl (int id){
         return urlRepository.getUrl(id);
+    }
+
+    public UrlVO getUrlId(String url) {
+        return urlRepository.getUrlId(url);
     }
 
     public boolean isExist(String url){
@@ -29,4 +33,5 @@ public class UrlService {
     public void insertUrlHit(UrlHitVO vo) throws Exception{
         urlRepository.insertUrlHit(vo);
     }
+
 }

@@ -20,17 +20,6 @@ public class UrlController {
 
     @RequestMapping("/")
     public String index(Model model){
-
-        System.out.println(urlService.isExist("http://google.com1"));
-        if(urlService.isExist("http://google.com1")){
-
-        }else{
-
-        }
-
-
-        model.addAttribute("url", urlService.getUrl(""));
-
         return "index";
     }
 
@@ -43,30 +32,45 @@ public class UrlController {
 
 
     @RequestMapping("/put/url")
-    public @ResponseBody int insertUrl(UrlVO vo){
-        int rt = 0;
-
+    public @ResponseBody String insertUrl(UrlVO vo){
+        String rt = "";
+        String url = vo.getUrl().toString().trim();
         try {
-            urlService.insertUrl(vo);
-            rt = 1;
+            if(!urlService.isExist(url)){ //check if the url exist
+                urlService.insertUrl(vo); // if not insert
+            }
+            rt = Integer.toHexString((urlService.getUrlId(url).getId())); // return hex string
         } catch (Exception e) {
             e.printStackTrace();
+            rt = "0";   // return error
         }finally {
             return rt;
         }
     }
 
     @RequestMapping("/put/urlHit")
-    public @ResponseBody int insertUrlHit(UrlHitVO vo){
-        int rt = 0;
-
+    public String insertUrlHit(UrlHitVO vo){
+        String rtUrl = "404";
         try {
-            urlService.insertUrlHit(vo);
-            rt = 1;
+            urlService.insertUrlHit(vo); //url_hit table insert
+            String[] hexUrls = vo.getUrl().split("/");
+            String hexUrl = hexUrls[hexUrls.length-1];
+            rtUrl = urlService.getUrl( Integer.parseInt(hexUrl,16) );
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            return rt;
         }
+        return "redirect:"+rtUrl;
+    }
+
+    @RequestMapping("/get/history")
+    public @ResponseBody String getHistory(){
+        urlService.getHistory();
+    }
+
+
+    public String getShortenStr(int num){
+        String shortenStr = "";
+
+        return shortenStr;
     }
 }

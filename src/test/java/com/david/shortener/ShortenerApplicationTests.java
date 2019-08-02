@@ -23,4 +23,18 @@ public class ShortenerApplicationTests {
         }
     }
 
+    @Test
+    public void makeShort(){
+
+
+        for(int n=0; n < 1000000; n++) {
+
+            String intToHex = Integer.toHexString(n);
+            int hexToInt = Integer.parseInt(intToHex, 16);
+            System.out.println(intToHex);
+            System.out.println(hexToInt);
+        }
+
+    }
+
 }

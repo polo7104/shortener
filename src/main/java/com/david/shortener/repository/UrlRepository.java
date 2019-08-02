@@ -11,11 +11,14 @@ import java.util.List;
 @Repository
 public interface UrlRepository {
 
-    List<UrlVO> getUrl(String id);
+    String getUrl(int id);
+
+    UrlVO getUrlId(String url);
 
     boolean isExist(String url);
 
     void insertUrl(UrlVO vo) throws Exception;
 
     void insertUrlHit(UrlHitVO vo) throws Exception;
+
 }
