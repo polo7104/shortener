@@ -1,13 +1,11 @@
 package com.david.shortener.domain;
 
-import lombok.Data;
-
 
 public class UrlHitVO {
 
     private String url;
     private String ip;
-    private String hitDate;
+    private String hit_date;
 
     public String getUrl() {
         return url;
@@ -25,12 +23,12 @@ public class UrlHitVO {
         this.ip = ip;
     }
 
-    public String getHitDate() {
-        return hitDate;
+    public String getHit_date() {
+        return hit_date;
     }
 
-    public void setHitDate(String hitDate) {
-        this.hitDate = hitDate;
+    public void setHit_date(String hit_date) {
+        this.hit_date = hit_date;
     }
 
 

@@ -1,5 +1,5 @@
 
-## url tble
+## url table
 create sequence tbl_url_id_seq;
 
 create table tbl_url (

@@ -34,4 +34,7 @@ public class UrlService {
         urlRepository.insertUrlHit(vo);
     }
 
+    public List<UrlHitVO> getHistory() {
+        return urlRepository.getHistory();
+    }
 }

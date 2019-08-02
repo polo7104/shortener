@@ -18,10 +18,12 @@
         insert into tbl_url (url,create_date) values (#{url},now())
     </insert>
 
-
     <insert id="insertUrlHit" parameterType="UrlHitVO" >
         insert into tbl_url_hit (url,ip,hit_date) values (#{url}, #{ip}, now())
     </insert>
 
+    <select id="getHistory" resultType="UrlHitVO">
+        select url,ip,to_char(hit_date, 'YYYY-MM-DD HH12:MI:SS') as hit_date from tbl_url_hit order by hit_date desc
+    </select>
 
 </mapper>

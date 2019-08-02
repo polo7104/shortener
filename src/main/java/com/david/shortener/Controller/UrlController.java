@@ -4,6 +4,7 @@ package com.david.shortener.Controller;
 import com.david.shortener.domain.UrlHitVO;
 import com.david.shortener.domain.UrlVO;
 import com.david.shortener.service.UrlService;
+import com.google.gson.Gson;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,9 @@ public class UrlController {
     }
 
 
-    @RequestMapping("/test")
-    public @ResponseBody String test(@ModelAttribute UrlVO vo){
-        System.out.println(vo);
-        return vo.toString();
+    @RequestMapping("/500")
+    public  String test(){
+        return "500";
     }
 
 
@@ -50,7 +50,7 @@ public class UrlController {
 
     @RequestMapping("/put/urlHit")
     public String insertUrlHit(UrlHitVO vo){
-        String rtUrl = "404";
+        String rtUrl = "500";
         try {
             urlService.insertUrlHit(vo); //url_hit table insert
             String[] hexUrls = vo.getUrl().split("/");
@@ -64,7 +64,10 @@ public class UrlController {
 
     @RequestMapping("/get/history")
     public @ResponseBody String getHistory(){
-        urlService.getHistory();
+
+        Gson gson = new Gson();
+        String jsonHit = gson.toJson(urlService.getHistory());
+        return jsonHit;
     }
 
 

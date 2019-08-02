@@ -84,7 +84,15 @@
 
         $(document).on('click','#btn_history',function(data){
             $.get('/get/history',function(data){
-                $('#history').html(data);
+                var jsonD = JSON.parse(data);
+                var html = '<table class="table table-striped" >'
+                html += '<thead><tr><th scope="col">URL</th><th scope="col">IP</th><th scope="col">HIT DATE</th></tr></thead>';
+                jsonD.forEach(function(v,k){
+                    html += '<tr><td>'+v.url+'</td><td>'+v.ip+'</td><td>'+v.hit_date+'</td></tr>';
+                })
+                html += '</table>';
+
+                $('#history').html(html);
             })
         })
     </script>
