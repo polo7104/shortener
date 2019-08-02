@@ -1,0 +1,29 @@
+#datasource
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/shortener
+    username: david
+    password: 1234
+
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    resources:
+      static-locations: classpath:/static/
+      add-mappings: true
+
+#server
+server:
+  port: 8080
+
+#mybatis
+mybatis:
+  #config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.david.shortener.domain
+  mybatis:
+    configuration:
+      return-instance-for-empty-row: true

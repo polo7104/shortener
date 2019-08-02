@@ -1,0 +1,43 @@
+{
+  "name": "shortener",
+  "homepage": "https://github.com/polo7104/shortener",
+  "authors": [
+    "jinseok <4860ss>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  },
+  "install": {
+    "path": {
+      "css": "static/css",
+      "js": "static/js"
+    },
+    "sources": {
+      "jquery" : [
+        "bower_components/jquery/dist/jquery.min.js"
+      ],
+      "bootstrap": [
+        "bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "bower_components/bootstrap/dist/css/bootstrap-theme.min.css",
+        "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+        "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+        "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+        "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js"
+      ]
+    }
+  }
+
+}
